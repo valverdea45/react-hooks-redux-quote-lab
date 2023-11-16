@@ -1,6 +1,24 @@
 import React from "react";
+import Quotes from "./features/quotes/Quotes"
+import QuoteForm from "./features/quotes/QuoteForm"
+import { useDispatch } from "react-redux";
+import { addQuote, upvoteQuote } from "./features/quotes/quotesSlice";
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  const quote = {
+    content: "test quote",
+    author: "test author",
+    votes: 0,
+    id: 1,
+  };
+
+  dispatch(addQuote(quote))
+
+  dispatch(upvoteQuote(1))
+
   return (
     <div className="container-fluid">
       <div
@@ -10,11 +28,9 @@ function App() {
         <h1>Quote Maker</h1>
       </div>
       <hr />
-      {/*
-          TODO:
+      <QuoteForm/>
+      <Quotes/>
 
-          Render QuoteForm and Quotes Components
-         */}
     </div>
   );
 }
